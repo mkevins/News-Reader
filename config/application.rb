@@ -11,7 +11,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-module NewReader
+module NewsReader
   class Application < Rails::Application
     config.encoding = "utf-8"
     # Settings in config/environments/* take precedence over those specified here.

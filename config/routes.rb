@@ -1,4 +1,4 @@
-NewReader::Application.routes.draw do
+NewsReader::Application.routes.draw do
   namespace :api do
     resources :feeds, only: [:index, :create, :show] do
       resources :entries, only: [:index]
