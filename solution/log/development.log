@@ -1,0 +1,462 @@
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/w1zeman1p/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-27 13:23:00 -0700
+
+ActiveRecord::PendingMigrationError - Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.:
+  activerecord (4.0.2) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.2) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2666714191480451745__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/w1zeman1p/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/w1zeman1p/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/w1zeman1p/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/70352592609740/variables" for 127.0.0.1 at 2014-08-27 13:23:01 -0700
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFeeds (20130626182935)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "feeds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255) NOT NULL, "title" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_feeds_on_url" ON "feeds" ("url")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130626182935"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEntries (20130626183103)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guid" varchar(255) NOT NULL, "link" varchar(255) NOT NULL, "title" varchar(255) NOT NULL, "published_at" datetime NOT NULL, "feed_id" integer NOT NULL, "json" text NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_entries_on_feed_id" ON "entries" ("feed_id")[0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_entries_on_guid" ON "entries" ("guid")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130626183103"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateUsers (20140110005026)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "password_digest" varchar(255), "session_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140110005026"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to CreateUserFeeds (20140110005108)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "user_feeds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "feed_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140110005108"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /Users/w1zeman1p/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by FeedsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 16ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 322ms (Views: 321.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/feeds/index.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/new_reader.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/feeds/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/entries/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/models/feed.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/models/entry.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/collections/entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/collections/feed_entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/collections/feeds.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/views/feed_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/views/entry_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/views/feeds_index.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/routers/feed_router.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/assets/background3.png" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+
+
+Started GET "/feeds" for 127.0.0.1 at 2014-08-27 13:23:18 -0700
+Processing by FeedsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 15ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-08-27 13:23:19 -0700
+Processing by SessionsController#new as JSON
+  Rendered sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 22ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-08-27 13:23:24 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/feeds" for 127.0.0.1 at 2014-08-27 13:23:25 -0700
+Processing by FeedsController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2014-08-27 13:23:25 -0700
+Processing by SessionsController#new as JSON
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 15ms (Views: 15.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-08-27 13:23:33 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"l94ljQRtqxZdB0YnQTP23CcHIFwDbFmODXh6DRGC+9w=", "user"=>{"username"=>"cjavilla", "password"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (4.1ms)[0m  INSERT INTO "users" ("created_at", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:23:34 UTC +00:00], ["password_digest", "$2a$10$ncxVIPOnOPvfZjvyKDvwJuXdQGutft34b6MRAc1OVfigd2uj2Z60S"], ["updated_at", Wed, 27 Aug 2014 20:23:34 UTC +00:00], ["username", "cjavilla"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 80ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-27 13:23:34 -0700
+Processing by FeedsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+  Rendered feeds/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 21ms (Views: 8.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/feeds" for 127.0.0.1 at 2014-08-27 13:23:34 -0700
+Processing by FeedsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1[0m
+  [1m[35mFeed Load (0.2ms)[0m  SELECT "feeds".* FROM "feeds"
+Completed 200 OK in 2007ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-27 13:23:36 -0700
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1[0m
+  Rendered feeds/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:36 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-27 13:23:36 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:36 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:36 -0700
+
+
+Started GET "/assets/new_reader.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/entries/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/feeds/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/feeds/index.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/collections/entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/models/feed.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/models/entry.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/collections/feed_entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/collections/feeds.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/views/entry_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/views/feed_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/views/feeds_index.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/assets/routers/feed_router.js?body=1" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+
+
+Started GET "/feeds" for 127.0.0.1 at 2014-08-27 13:23:37 -0700
+Processing by FeedsController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+  [1m[36mFeed Load (0.2ms)[0m  [1mSELECT "feeds".* FROM "feeds"[0m
+Completed 200 OK in 2003ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/feeds" for 127.0.0.1 at 2014-08-27 13:24:15 -0700
+Processing by FeedsController#create as JSON
+  Parameters: {"url"=>"http://lorem-rss.herokuapp.com/feed?unit=second&interval=10", "entries"=>nil, "feed"=>{"url"=>"http://lorem-rss.herokuapp.com/feed?unit=second&interval=10"}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+  [1m[36mFeed Load (0.1ms)[0m  [1mSELECT "feeds".* FROM "feeds" WHERE "feeds"."url" = 'http://lorem-rss.herokuapp.com/feed?unit=second&interval=10' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "feeds" ("created_at", "title", "updated_at", "url") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["title", "Lorem ipsum feed for an interval of 10 seconds"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["url", "http://lorem-rss.herokuapp.com/feed?unit=second&interval=10"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171050"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:24:10+00:00\",\"link\":\"http://example.com/test/1409171050\",\"description\":\"Magna elit nostrud proident ut occaecat aute eiusmod ullamco.\",\"pubDate\":\"2014-08-27T13:24:10-07:00\",\"guid\":\"http://example.com/test/1409171050\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171050"], ["published_at", Wed, 27 Aug 2014 20:24:10 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:24:10+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171040"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:24:00+00:00\",\"link\":\"http://example.com/test/1409171040\",\"description\":\"Sit voluptate et elit dolor et nostrud ipsum consequat sint cupidatat.\",\"pubDate\":\"2014-08-27T13:24:00-07:00\",\"guid\":\"http://example.com/test/1409171040\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171040"], ["published_at", Wed, 27 Aug 2014 20:24:00 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:24:00+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171030"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:50+00:00\",\"link\":\"http://example.com/test/1409171030\",\"description\":\"Amet est in cillum sunt.\",\"pubDate\":\"2014-08-27T13:23:50-07:00\",\"guid\":\"http://example.com/test/1409171030\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171030"], ["published_at", Wed, 27 Aug 2014 20:23:50 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:50+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171020"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:40+00:00\",\"link\":\"http://example.com/test/1409171020\",\"description\":\"Sunt sunt laborum irure fugiat ut labore fugiat sit.\",\"pubDate\":\"2014-08-27T13:23:40-07:00\",\"guid\":\"http://example.com/test/1409171020\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171020"], ["published_at", Wed, 27 Aug 2014 20:23:40 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:40+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171010"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:30+00:00\",\"link\":\"http://example.com/test/1409171010\",\"description\":\"Commodo esse aliquip mollit Lorem ut ullamco dolor cupidatat non aliquip duis.\",\"pubDate\":\"2014-08-27T13:23:30-07:00\",\"guid\":\"http://example.com/test/1409171010\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171010"], ["published_at", Wed, 27 Aug 2014 20:23:30 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:30+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171000"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:20+00:00\",\"link\":\"http://example.com/test/1409171000\",\"description\":\"Mollit Lorem officia enim nostrud excepteur ea laboris mollit laborum amet non velit.\",\"pubDate\":\"2014-08-27T13:23:20-07:00\",\"guid\":\"http://example.com/test/1409171000\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171000"], ["published_at", Wed, 27 Aug 2014 20:23:20 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:20+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409170990"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:10+00:00\",\"link\":\"http://example.com/test/1409170990\",\"description\":\"Mollit cupidatat id excepteur commodo exercitation proident.\",\"pubDate\":\"2014-08-27T13:23:10-07:00\",\"guid\":\"http://example.com/test/1409170990\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409170990"], ["published_at", Wed, 27 Aug 2014 20:23:10 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:10+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409170980"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:23:00+00:00\",\"link\":\"http://example.com/test/1409170980\",\"description\":\"Lorem quis occaecat aute sunt veniam nostrud est incididunt.\",\"pubDate\":\"2014-08-27T13:23:00-07:00\",\"guid\":\"http://example.com/test/1409170980\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409170980"], ["published_at", Wed, 27 Aug 2014 20:23:00 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:23:00+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409170970"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:22:50+00:00\",\"link\":\"http://example.com/test/1409170970\",\"description\":\"Anim eu irure cupidatat culpa eu exercitation proident non est.\",\"pubDate\":\"2014-08-27T13:22:50-07:00\",\"guid\":\"http://example.com/test/1409170970\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409170970"], ["published_at", Wed, 27 Aug 2014 20:22:50 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:22:50+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409170960"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:22:40+00:00\",\"link\":\"http://example.com/test/1409170960\",\"description\":\"Quis ipsum dolore occaecat voluptate pariatur tempor.\",\"pubDate\":\"2014-08-27T13:22:40-07:00\",\"guid\":\"http://example.com/test/1409170960\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409170960"], ["published_at", Wed, 27 Aug 2014 20:22:40 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:22:40+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:15 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "entries"."guid" FROM "entries"[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."feed_id" = ?  [["feed_id", 1]]
+Completed 200 OK in 667ms (Views: 0.1ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/feeds/1/entries" for 127.0.0.1 at 2014-08-27 13:24:18 -0700
+Processing by EntriesController#index as JSON
+  Parameters: {"feed_id"=>"1"}
+  [1m[36mFeed Load (0.2ms)[0m  [1mSELECT "feeds".* FROM "feeds" WHERE "feeds"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."feed_id" = ?  [["feed_id", 1]]
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/feeds/1/entries" for 127.0.0.1 at 2014-08-27 13:24:20 -0700
+Processing by EntriesController#index as JSON
+  Parameters: {"feed_id"=>"1"}
+  [1m[36mFeed Load (0.1ms)[0m  [1mSELECT "feeds".* FROM "feeds" WHERE "feeds"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."feed_id" = ?  [["feed_id", 1]]
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/feeds/1/entries" for 127.0.0.1 at 2014-08-27 13:24:25 -0700
+Processing by EntriesController#index as JSON
+  Parameters: {"feed_id"=>"1"}
+  [1m[36mFeed Load (0.1ms)[0m  [1mSELECT "feeds".* FROM "feeds" WHERE "feeds"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "entries"."guid" FROM "entries"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `guid`
+Binary data inserted for `string` type on column `link`
+Binary data inserted for `string` type on column `title`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "entries" ("created_at", "feed_id", "guid", "json", "link", "published_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 27 Aug 2014 20:24:26 UTC +00:00], ["feed_id", 1], ["guid", "http://example.com/test/1409171060"], ["json", "{\"title\":\"Lorem ipsum 2014-08-27T20:24:20+00:00\",\"link\":\"http://example.com/test/1409171060\",\"description\":\"Laborum laboris magna Lorem aute ipsum tempor irure dolore labore nisi officia adipisicing sint sit.\",\"pubDate\":\"2014-08-27T13:24:20-07:00\",\"guid\":\"http://example.com/test/1409171060\",\"dc_creator\":\"John Smith\"}"], ["link", "http://example.com/test/1409171060"], ["published_at", Wed, 27 Aug 2014 20:24:20 UTC +00:00], ["title", "Lorem ipsum 2014-08-27T20:24:20+00:00"], ["updated_at", Wed, 27 Aug 2014 20:24:26 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."feed_id" = ?  [["feed_id", 1]]
+Completed 200 OK in 267ms (Views: 4.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+Processing by FeedsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1[0m
+  Rendered feeds/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/feeds/index.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/new_reader.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/feeds/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/entries/show.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/models/entry.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/models/feed.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/collections/entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/collections/feed_entries.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/views/entry_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/collections/feeds.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/views/feed_show.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/views/feeds_index.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/routers/feed_router.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/assets/background3.png" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+
+
+Started GET "/feeds" for 127.0.0.1 at 2014-08-27 13:27:32 -0700
+Processing by FeedsController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT 1
+  [1m[36mFeed Load (0.2ms)[0m  [1mSELECT "feeds".* FROM "feeds"[0m
+  [1m[35mEntry Load (0.3ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."feed_id" IN (1)
+Completed 200 OK in 2015ms (Views: 0.1ms | ActiveRecord: 0.7ms)
