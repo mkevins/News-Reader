@@ -1,4 +1,4 @@
-NewReader.Routers.FeedRouter = Backbone.Router.extend({
+NewsReader.Routers.FeedRouter = Backbone.Router.extend({
   initialize: function (feeds, $rootEl, $sidebar) {
     this.feeds = feeds;
     this.$rootEl = $rootEl;
@@ -15,7 +15,7 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
   },
 
   show: function (id) {
-    var feedShowView = new NewReader.Views.FeedShow({
+    var feedShowView = new NewsReader.Views.FeedShow({
       model: this.feeds.get(id)
     });
 
@@ -24,7 +24,7 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
 
   entry: function (feed_id, id) {
     var entry = this.feeds.get(feed_id).get('entries').get(id);
-    var entryShowView = new NewReader.Views.EntryShow({
+    var entryShowView = new NewsReader.Views.EntryShow({
       model: entry
     });
 

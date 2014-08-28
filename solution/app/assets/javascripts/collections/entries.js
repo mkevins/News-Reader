@@ -1,5 +1,5 @@
-NewReader.Collections.Entries = Backbone.Collection.extend({
-  model: NewReader.Models.Entry,
+NewsReader.Collections.Entries = Backbone.Collection.extend({
+  model: NewsReader.Models.Entry,
   url: '/entries',
 
   comparator: function (entry) {

@@ -1,4 +1,4 @@
-NewReader.Views.FeedsIndex = Backbone.View.extend({
+NewsReader.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
   tagName: 'ul',
   className: 'feeds-index',

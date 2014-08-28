@@ -1,4 +1,4 @@
-NewReader.Views.EntryShow = Backbone.View.extend({
+NewsReader.Views.EntryShow = Backbone.View.extend({
   template: JST['entries/show'],
 
   render: function () {

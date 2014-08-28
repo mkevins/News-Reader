@@ -1,4 +1,4 @@
-NewReader.Collections.Feeds = Backbone.Collection.extend({
-  model: NewReader.Models.Feed,
+NewsReader.Collections.Feeds = Backbone.Collection.extend({
+  model: NewsReader.Models.Feed,
   url: '/feeds'
 });

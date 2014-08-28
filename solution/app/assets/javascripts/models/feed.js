@@ -1,4 +1,4 @@
-NewReader.Models.Feed = Backbone.Model.extend({
+NewsReader.Models.Feed = Backbone.Model.extend({
   initialize: function () {
     this.entries();
   },
@@ -13,7 +13,7 @@ NewReader.Models.Feed = Backbone.Model.extend({
 
   entries: function () {
     if (!this.get('entries')) {
-      var feedEntries = new NewReader.Collections.FeedEntries([], {
+      var feedEntries = new NewsReader.Collections.FeedEntries([], {
         feed: this
       });
       this.set({

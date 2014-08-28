@@ -1,4 +1,4 @@
-window.NewReader = {
+window.NewsReader = {
   Models: {},
   Collections: {},
   Views: {},
@@ -6,18 +6,18 @@ window.NewReader = {
   initialize: function () {
     var $rootEl = $('#content');
     var $sidebar = $('#sidebar');
-    var feeds = new NewReader.Collections.Feeds();
+    var feeds = new NewsReader.Collections.Feeds();
 
     // install the sidebar external to the router as it is
     // independent of any routing
-    var feedsIndexView = new NewReader.Views.FeedsIndex({
+    var feedsIndexView = new NewsReader.Views.FeedsIndex({
       collection: feeds
     });
     $sidebar.html(feedsIndexView.render().$el);
 
     feeds.fetch({
       success: function () {
-        new NewReader.Routers.FeedRouter(feeds, $rootEl);
+        new NewsReader.Routers.FeedRouter(feeds, $rootEl);
         Backbone.history.start();
       },
       error: function () {
@@ -27,4 +27,4 @@ window.NewReader = {
   }
 };
 // boot the app when the document is ready
-$(NewReader.initialize);
+$(NewsReader.initialize);

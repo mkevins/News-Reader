@@ -1,1 +1,1 @@
-NewReader.Models.Entry = Backbone.Model.extend({});
+NewsReader.Models.Entry = Backbone.Model.extend({});

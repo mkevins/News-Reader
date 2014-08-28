@@ -1,4 +1,4 @@
-NewReader::Application.routes.draw do
+NewsReader::Application.routes.draw do
   resource :session
   resources :users
   resources :feeds, only: [:index, :create] do
