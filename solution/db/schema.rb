@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140110005108) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entries", force: true do |t|
     t.string   "guid",         null: false
     t.string   "link",         null: false
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140110005108) do
     t.datetime "updated_at"
   end
 
-  add_index "entries", ["feed_id"], name: "index_entries_on_feed_id"
-  add_index "entries", ["guid"], name: "index_entries_on_guid", unique: true
+  add_index "entries", ["feed_id"], name: "index_entries_on_feed_id", using: :btree
+  add_index "entries", ["guid"], name: "index_entries_on_guid", unique: true, using: :btree
 
   create_table "feeds", force: true do |t|
     t.string   "url",        null: false
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140110005108) do
     t.datetime "updated_at"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
 
   create_table "user_feeds", force: true do |t|
     t.integer  "user_id"

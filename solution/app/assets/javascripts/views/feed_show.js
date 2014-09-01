@@ -1,9 +1,10 @@
-NewsReader.Views.FeedShow = Backbone.View.extend({
+NewReader.Views.FeedShow = Backbone.View.extend({
   template: JST['feeds/show'],
   className: 'feed-show',
 
   initialize: function (attribute) {
-    this.listenTo(this.model.get('entries'), 'add', this.render);
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.entries(), 'sync', this.render);
   },
 
   events: {
@@ -19,7 +20,7 @@ NewsReader.Views.FeedShow = Backbone.View.extend({
   },
 
   refresh: function () {
-    this.model.get('entries').fetch({
+    this.model.entries().fetch({
       error: function () {
         console.log('Could not refresh view for some reason');
       }

@@ -1,1 +1,3 @@
-NewsReader.Models.Entry = Backbone.Model.extend({});
+NewReader.Models.Entry = Backbone.Model.extend({
+  urlRoot: 'api/entries'
+});

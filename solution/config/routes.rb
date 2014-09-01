@@ -1,9 +1,12 @@
 NewsReader::Application.routes.draw do
   resource :session
   resources :users
-  resources :feeds, only: [:index, :create] do
-    resources :entries, only: [:index]
+  namespace :api do
+    resources :feeds, only: [:index, :create, :show] do
+      resources :entries, only: [:index]
+    end
+    resources :entries, only: [:show]
   end
 
-  root to: "feeds#index"
+  root to: "static_pages#index"
 end

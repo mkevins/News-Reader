@@ -5,9 +5,9 @@
 <button class="refresh-entries">Refresh Entries</button>
 
 <ul>
-  <% _.each(feed.get('entries').models, function(entry) { %>
+  <% _.each(feed.entries().models, function(entry) { %>
     <li>
-      <a href='#<%= entry.url() %>'><%= entry.escape('title') %></a>
+    <a href='#/feeds/<%= entry.get('feed_id') %>/entries/<%= entry.id %>'><%= entry.escape('title') %></a>
     </li>
   <% }); %>
 </ul>
