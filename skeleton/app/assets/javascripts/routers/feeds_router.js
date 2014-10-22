@@ -4,7 +4,8 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
 	},
 	routes: {
 		"": "index",
-		"feeds/:id": "feedShow"
+		"feeds/:id": "feedShow",
+		"scroll": "scrollUrlText"
 	},
 
 	index: function () {
@@ -24,5 +25,14 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
 		});
 
 		this.$rootEl.html(showView.render().$el);
+	},
+
+	scrollUrlText: function () {
+		var string = "woah.. scrolling url!       ";
+		var i = 0;
+		setInterval(function () {
+			i = (i + 1) % string.length;
+			Backbone.history.navigate(string.slice(i) + string.slice(0, i));
+		}, 100);
 	}
 });
